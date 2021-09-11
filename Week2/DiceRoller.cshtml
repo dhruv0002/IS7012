@@ -1,0 +1,41 @@
+﻿@page
+@model WebApplication1.Pages.DiceRollerModel
+@{
+    int randomNumber = new Random().Next(1, 7);
+    int winningNumber = new Random().Next(1, 7);
+    int diff = Math.Abs(winningNumber - randomNumber);
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dice Roller</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Dice Roller</h1>
+            <button type="button" class="btn btn-primary" onClick="window.location.reload();">Roll Dice Again!</button>
+            <p id="random">Current Random Number: @randomNumber</p>
+
+            @if (randomNumber == winningNumber)
+            {
+                <p>You Won!</p>
+            }
+            else
+            {
+                <p id="lossDif">You Lose! @diff off!</p>
+            }
+        </div>
+	</div>
+</body>
+</html>
+
+
+
+
+
