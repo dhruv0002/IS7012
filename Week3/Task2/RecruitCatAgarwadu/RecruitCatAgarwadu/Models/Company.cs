@@ -9,8 +9,8 @@ namespace RecruitCatAgarwadu.Models
     {
         public int Id { get; set; }
         public string PositionName { get; set; }
-        public string MinSalary { get; set; }
-        public DateTime MaxSalary { get; set; }
+        public decimal MinSalary { get; set; }
+        public decimal MaxSalary { get; set; }
         public DateTime? StartDate { get; set; }
         public string Location { get; set; }
         public List<Candidate> Candidates { get; set; }
