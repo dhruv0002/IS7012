@@ -1,0 +1,165 @@
+﻿@page
+@model RecruitCatAgarwadu.Pages.Companies.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Company: @Html.DisplayFor(model => model.Company.CompanyName)</h1>
+
+<div>
+    <h4>Company</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.CompanyName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.CompanyName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.PositionName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.PositionName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.MinSalary)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.MinSalary)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.MaxSalary)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.MaxSalary)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Location)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.IndustryAssoc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.IndustryAssoc.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.WorkPermitSponsership)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.WorkPermitSponsership)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Revenue)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Revenue)
+        </dd>
+    </dl>
+</div>
+
+@if(Model.Company.Candidates.Any())
+{
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidates[0].FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidates[0].LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidates[0].TargetSalary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidates[0].StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidates[0].CompanyAssoc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidates[0].IndustryAssoc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidates[0].Experience)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidates[0].DateOfBirth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidates[0].Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidates[0].LinkedInUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company.Candidates[0].PhoneNo)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Company.Candidates)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TargetSalary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyAssoc.CompanyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IndustryAssoc.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Experience)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LinkedInUrl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNo)
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}
+else
+{
+    <div class="alert alert-warning">No candidates are available in the company.</div>
+}
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Company.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
