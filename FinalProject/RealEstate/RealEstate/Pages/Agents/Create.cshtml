@@ -1,0 +1,59 @@
+﻿@page
+@model RealEstate.Pages.Agents.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create a new Agent</h1>
+
+<h4>Agent</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Agent.AgentName" class="control-label"></label>
+                <input asp-for="Agent.AgentName" class="form-control" />
+                <span asp-validation-for="Agent.AgentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Agent.Salary" class="control-label"></label>
+                <input asp-for="Agent.Salary" class="form-control" />
+                <span asp-validation-for="Agent.Salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Agent.DateOfBirth" class="control-label"></label>
+                <input asp-for="Agent.DateOfBirth" class="form-control" />
+                <span asp-validation-for="Agent.DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Agent.SalesOfficeAssocId" class="control-label"></label>
+                <select asp-for="Agent.SalesOfficeAssocId" class="form-control" asp-items="ViewBag.SalesOfficeAssocId"></select>
+                <span asp-validation-for="Agent.SalesOfficeAssocId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Agent.Email" class="control-label"></label>
+                <input asp-for="Agent.Email" class="form-control" />
+                <span asp-validation-for="Agent.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Agent.PhoneNo" class="control-label"></label>
+                <input asp-for="Agent.PhoneNo" class="form-control" />
+                <span asp-validation-for="Agent.PhoneNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

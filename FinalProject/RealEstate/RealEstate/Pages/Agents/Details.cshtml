@@ -1,0 +1,109 @@
+﻿@page
+@model RealEstate.Pages.Agents.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Agent: @Html.DisplayFor(model => model.Agent.AgentName)</h1>
+
+<div>
+    <h4>Agent</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Agent.AgentName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Agent.AgentName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Agent.Salary)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Agent.Salary)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Agent.DateOfBirth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Agent.DateOfBirth)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Agent.SalesOfficeAssoc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Agent.SalesOfficeAssoc.SalesOfficeName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Agent.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Agent.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Agent.PhoneNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Agent.PhoneNo)
+        </dd>
+    </dl>
+</div>
+
+@if (Model.Agent.Dwellings.Any())
+{
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Agent.Dwellings[0].DwellingName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Agent.Dwellings[0].ListingTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Agent.Dwellings[0].IsForSale)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Agent.Dwellings[0].Cost)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Agent.Dwellings[0].CityAssoc)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Agent.Dwellings)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DwellingName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ListingTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsForSale)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cost)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CityAssoc.CityName)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">No dwellings are assigned to the agent.</div>
+}
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Agent.AgentId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

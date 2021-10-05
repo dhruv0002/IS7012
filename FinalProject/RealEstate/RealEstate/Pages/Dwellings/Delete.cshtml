@@ -1,0 +1,58 @@
+﻿@page
+@model RealEstate.Pages.Dwellings.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Dwelling Agent - @Html.DisplayFor(model => model.Dwelling.DwellingName)</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Dwelling</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dwelling.DwellingName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dwelling.DwellingName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dwelling.ListingTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dwelling.ListingTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dwelling.IsForSale)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dwelling.IsForSale)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dwelling.Cost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dwelling.Cost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dwelling.AgentAssoc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dwelling.AgentAssoc.AgentName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dwelling.CityAssoc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dwelling.CityAssoc.CityName)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Dwelling.DwellingId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

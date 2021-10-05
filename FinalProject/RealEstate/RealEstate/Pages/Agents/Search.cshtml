@@ -1,0 +1,95 @@
+﻿@page
+@model RealEstate.Pages.Agents.SearchModel
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search Agents</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<div class="row">
+    <div class="col">
+        <form method="get" class="form-inline">
+            <input asp-for="Query" class="form-control mr-sm-2 mb-2" placeholder="Search name..." />
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+    </div>
+</div>
+
+@if (Model.SearchCompleted)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Agent[0].AgentName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Agent[0].Salary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Agent[0].DateOfBirth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Agent[0].SalesOfficeAssoc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Agent[0].Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Agent[0].PhoneNo)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Agent)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AgentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SalesOfficeAssoc.SalesOfficeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNo)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.AgentId">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.AgentId">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.AgentId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-info">
+                No results match your term <strong>@Model.Query</strong>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+

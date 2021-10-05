@@ -1,0 +1,95 @@
+﻿@page
+@model RealEstate.Pages.Dwellings.SearchModel
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search Dwellings</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<div class="row">
+    <div class="col">
+        <form method="get" class="form-inline">
+            <input asp-for="Query" class="form-control mr-sm-2 mb-2" placeholder="Search name..." />
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+    </div>
+</div>
+
+@if (Model.SearchCompleted)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dwelling[0].DwellingName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dwelling[0].ListingTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dwelling[0].IsForSale)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dwelling[0].Cost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dwelling[0].AgentAssoc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dwelling[0].CityAssoc)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Dwelling)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DwellingName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ListingTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsForSale)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AgentAssoc.AgentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CityAssoc.CityName)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.DwellingId">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.DwellingId">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.DwellingId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-info">
+                No results match your term <strong>@Model.Query</strong>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+

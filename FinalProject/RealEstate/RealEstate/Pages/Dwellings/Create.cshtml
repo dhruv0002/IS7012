@@ -1,0 +1,60 @@
+﻿@page
+@model RealEstate.Pages.Dwellings.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create a new Dwelling</h1>
+
+<h4>Dwelling</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Dwelling.DwellingName" class="control-label"></label>
+                <input asp-for="Dwelling.DwellingName" class="form-control" />
+                <span asp-validation-for="Dwelling.DwellingName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dwelling.ListingTime" class="control-label"></label>
+                <input asp-for="Dwelling.ListingTime" class="form-control" />
+                <span asp-validation-for="Dwelling.ListingTime" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Dwelling.IsForSale" /> @Html.DisplayNameFor(model => model.Dwelling.IsForSale)
+                </label>
+                <span asp-validation-for="Dwelling.IsForSale" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dwelling.Cost" class="control-label"></label>
+                <input asp-for="Dwelling.Cost" class="form-control" />
+                <span asp-validation-for="Dwelling.Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dwelling.AgentAssocId" class="control-label"></label>
+                <select asp-for="Dwelling.AgentAssocId" class="form-control" asp-items="ViewBag.AgentAssocId"></select>
+                <span asp-validation-for="Dwelling.AgentAssocId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dwelling.CityAssocId" class="control-label"></label>
+                <select asp-for="Dwelling.CityAssocId" class="form-control" asp-items="ViewBag.CityAssocId"></select>
+                <span asp-validation-for="Dwelling.CityAssocId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

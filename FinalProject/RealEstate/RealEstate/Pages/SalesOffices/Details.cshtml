@@ -1,0 +1,103 @@
+﻿@page
+@model RealEstate.Pages.SalesOffices.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Sales Office: @Html.DisplayFor(model => model.SalesOffice.SalesOfficeName)</h1>
+
+<div>
+    <h4>SalesOffice</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SalesOffice.SalesOfficeName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOffice.SalesOfficeName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SalesOffice.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOffice.Location)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SalesOffice.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOffice.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SalesOffice.CompanyUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOffice.CompanyUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SalesOffice.PhoneNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOffice.PhoneNo)
+        </dd>
+    </dl>
+</div>
+
+@if (Model.SalesOffice.Agents.Any())
+{
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SalesOffice.Agents[0].AgentName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SalesOffice.Agents[0].Salary)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SalesOffice.Agents[0].DateOfBirth)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SalesOffice.Agents[0].Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SalesOffice.Agents[0].PhoneNo)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.SalesOffice.Agents)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AgentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Salary)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfBirth)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNo)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">No agents are employed in the sales office.</div>
+}
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.SalesOffice.SalesOfficeId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

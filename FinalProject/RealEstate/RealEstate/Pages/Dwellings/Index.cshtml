@@ -1,0 +1,67 @@
+﻿@page
+@model RealEstate.Pages.Dwellings.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Dwellings</h1>
+
+<p>
+    <a asp-page="Create">Create New</a> |
+    <a asp-page="./Search">Search</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Dwelling[0].DwellingName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dwelling[0].ListingTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dwelling[0].IsForSale)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dwelling[0].Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dwelling[0].AgentAssoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dwelling[0].CityAssoc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Dwelling) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DwellingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ListingTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsForSale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentAssoc.AgentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityAssoc.CityName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.DwellingId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.DwellingId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.DwellingId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
