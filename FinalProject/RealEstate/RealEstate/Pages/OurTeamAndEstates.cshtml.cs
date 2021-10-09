@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace RealEstate.Pages
 {
-    public class OurTeamModel : PageModel
+    public class OurTeamAndEstatesModel : PageModel
     {
         public void OnGet()
         {
