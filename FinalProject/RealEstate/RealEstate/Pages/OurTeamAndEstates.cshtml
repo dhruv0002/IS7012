@@ -1,10 +1,10 @@
 ﻿@page
-@model RealEstate.Pages.OurTeamModel
+@model RealEstate.Pages.OurTeamAndEstatesModel
 @{
 }
 <html>
 <head>
-    <title>Our Team</title>
+    <title>OurTeamAndEstates</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
@@ -15,12 +15,33 @@
             color: brown;
             text-decoration: underline;
         }
+        #plx1 {
+            background: url(img/house1.jpg);
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #plx2 {
+            background: url(img/house2.jpg);
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #plx3 {
+            background: url(img/house3.jpg);
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
     </style>
 </head>
 
-<body>
+<body style="margin-bottom:35px;">
     <div class="heading">
-        <h3><em>WOLFS OF REAL ESTATES</em></h3>
+        <h3><em>WOLFS OF REAL ESTATE</em></h3>
     </div>
     <div class="container">
         <div class="row">
@@ -87,5 +108,43 @@
             </div>
         </div>
     </div>
+
+    <div class="heading">
+        <h3><em>SOME OF OUR AVAILABLE PROPERTIES</em></h3>
+    </div>
+
+    <section id="plx1">
+        <div class="container mb-5" style="height:600px;">
+            <div class="atitle text-center">
+                <p style="color:white;font-size:50px;">65 West, Cincinnati Ohio</p>
+                </br>
+                <p style="color:white;font-size:20px;text-align:right">This could be yours any day !!</p>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="plx2">
+        <div class="container mb-5" style="height:600px;">
+            <div class="atitle text-center">
+                <p style="color:white;font-size:50px;">Forum, Cincinnati Ohio</p>
+                </br>
+                <p style="color:white;font-size:20px;text-align:right">A place for the ones who love peace !!</p>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="plx3">
+        <div class="container mb-5" style="height:600px;">
+            <div class="atitle text-center">
+                <p style="color:white;font-size:50px;">123 McMillan, Cincinnati Ohio</p>
+                </br>
+                <p style="color:white;font-size:20px;text-align:right">A place for shopping and outing lovers !!</p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
